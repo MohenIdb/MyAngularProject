@@ -1,0 +1,25 @@
+<p>
+  <a class="btn btn-primary" [routerLink]="['/bloodBank/new']">Add BloodGroup</a>
+</p>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>BloodGroupID</th>
+      <th>BloodGroup Name</th>
+      <th>Description</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let c of bloodBanks">
+      <td>{{c.bloodGroupID}}</td>
+      <td>{{c.bloodGroupName}}</td>
+      <td>{{c.description}}</td>
+      <td>
+        <a class="btn btn-primary" [routerLink]="['/bloodBank/', c.bloodGroupID]">Edit</a>
+        <button class="btn btn-danger" (click)="delete(c.bloodGroupID)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

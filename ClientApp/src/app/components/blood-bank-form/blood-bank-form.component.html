@@ -1,0 +1,21 @@
+<h2>BloodBank Information </h2>
+<hr />
+<p>
+  <a [routerLink]="['/bloodBank']" class="btn btn-primary">Back to List</a>
+</p>
+<form #f="ngForm" (ngSubmit)="submit()">
+  <div class="form-group">
+    <label for="courseName">BloodGroup Name</label>
+    <input type="text" id="bloodGroupName" class="form-control" [(ngModel)]="bloodBank.bloodGroupName" name="bloodGroupName" required #bloodGroupName="ngModel" />
+    <div class="alert alert-danger" *ngIf="bloodGroupName.touched && !bloodGroupName.valid">Please Enter bloodGroup Name </div>
+  </div>
+
+  <div class="form-group">
+    <label for="description">Description</label>
+    <input type="text" id="description" class="form-control" [(ngModel)]="bloodBank.description" name="description" required #description="ngModel" />
+    <div class="alert alert-danger" *ngIf="description.touched && !description.valid">Please Enter description</div>
+  </div>
+
+  <input type="submit" class="btn btn-primary" [disabled]="!f.valid" value="Add" *ngIf="!bloodBank.bloodGroupID" />
+  <input type="submit" class="btn btn-info" value="Update" *ngIf="bloodBank.bloodGroupID" />
+</form>
